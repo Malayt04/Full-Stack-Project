@@ -1,3 +1,3 @@
-#FullStack Tutorial
+# Full Stack Project
 
-This is a tutorial to learn full stack developement 
+This is a project to learn full stack developement 
