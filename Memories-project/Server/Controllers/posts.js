@@ -10,3 +10,16 @@ export  async function getPosts(req,res){
    }
 }
 
+export async function createPost(req,res){
+   const post=req.body();
+   const newPost=new PostMessege(post);
+   try {
+      await newPost.save();
+      res.status(200).json(newPost);
+   } catch (error) {
+      res.status(404).json(error.message)
+   }
+}
+
+
+
