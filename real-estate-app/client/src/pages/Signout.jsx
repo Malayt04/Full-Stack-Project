@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
+
 
 function Signout() {
-  return (
-    <div>
-      <h1>Signout</h1>
-    </div>
+ return(
+  <>
+    <h1>sign</h1>
+  </>
   )
 }
 
