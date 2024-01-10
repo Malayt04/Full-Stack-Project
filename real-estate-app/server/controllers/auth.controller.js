@@ -1,15 +1,18 @@
-import bcryptjs from 'bcryptjs';
+import bcryptjs from 'bcryptjs'; //password hashing 
 import User from '../models/user.model.js'
 import handleError from '../utils/error.js'
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken' //to create token
 import dotenv from 'dotenv'
 dotenv.config();
-const secretKey=process.env.SECRET_KEY
+
+
+const secretKey=process.env.SECRET_KEY //used for hashing jsonwebtoken
+
 
 export const signUp=async(req,res,next)=>{
 
     const {username,email,password}=req.body;
-    const hashedPassword=bcryptjs.hashSync(password,10);
+    const hashedPassword=bcryptjs.hashSync(password,10);  //here 10 is the level of salting
     const newUser=new User({username,email,password:hashedPassword});
     try {
         await newUser.save();
@@ -31,7 +34,7 @@ export const signIn=async(req,res,next)=>{
         if(!validPassword){
             return next(handleError(401,"Wrong credentials"));
         }
-        const token=jwt.sign({id:validUser.id},secretKey)
+        const token=jwt.sign({id:validUser._id},secretKey)
         const {password:pass, ...userInfo}=validUser._doc;
         res.cookie('access_token',token,{httpOnly:true, expires:new Date(Date.now()+24*60*60*1000)}).status(200).json(userInfo);
     } catch (error) {

@@ -1,5 +1,5 @@
 import {FaSearch} from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';  //Link is used instead of anchor tag so that the entire page don't get reloaded as react is a single page application 
 
 function Header() {
 

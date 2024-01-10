@@ -1,3 +1,5 @@
+//handelling error by client 
+ 
  const handleError=(statusCode,message)=>{
     const error=new Error();
     error.statusCode = statusCode;

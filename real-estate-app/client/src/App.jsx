@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom" //Dynamically add pages 
 import Home from "./pages/Home"
 import Signup from "./pages/Signup"
 import Signout from "./pages/Signout"

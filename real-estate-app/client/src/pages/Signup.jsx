@@ -1,13 +1,19 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react";
 import OAuth from "../components/OAuth";
 
 function Signup() {
+
+
   const [formData,setFormData]=useState({
     username:'', email:'', password:''
   });
+
   const [error,setError]=useState(null);
   const[loading,setLoading]=useState(false);
+
+
+   const navigate=useNavigate();
 
     const handleChange=(e)=>{
       setFormData({
@@ -16,10 +22,13 @@ function Signup() {
       })
     }
 
+
+
     const handleSubmit=async(e)=>{
       try {
         e.preventDefault();
-      setLoading(true);
+        setLoading(true);
+
       const res=await fetch('/api/auth/signup',
       {
         method:'POST',
@@ -34,8 +43,8 @@ function Signup() {
         setLoading(false);
         return;
       }
-      setLoading(false)
-      console.log(data);
+      setLoading(false);
+      navigate('/signin');
       } catch (error) {
         setLoading(false);
         setError(error.message);
