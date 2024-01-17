@@ -41,13 +41,13 @@ function Signin() {
           });
           const data = await res.json();
           if (data.success === false) {
-            dispatch(signInFailure(data.message)); // Use signInFailure from userSlice
+            dispatch(signInFailure(data.messege)); // Use signInFailure from userSlice
             return;
           }
           dispatch(signInSuccess(data)); // Use signInSuccess from userSlice
           navigate('/');
         } catch (error) {
-          dispatch(signInFailure(error.message)); // Use signInFailure from userSlice
+          dispatch(signInFailure(error.messege)); // Use signInFailure from userSlice
         }
       }
            
