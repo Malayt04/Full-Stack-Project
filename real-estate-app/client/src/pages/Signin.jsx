@@ -47,7 +47,8 @@ function Signin() {
           dispatch(signInSuccess(data)); // Use signInSuccess from userSlice
           navigate('/');
         } catch (error) {
-          dispatch(signInFailure(error.messege)); // Use signInFailure from userSlice
+          dispatch(signInFailure(error.messege));
+          console.log(error) // Use signInFailure from userSlice
         }
       }
            

@@ -1,6 +1,6 @@
 import bcryptjs from 'bcryptjs'; //password hashing 
 import User from '../models/user.model.js'
-import handleError from '../utils/error.js'
+import {handleError} from '../utils/error.js'
 import jwt from 'jsonwebtoken' //to create token
 import dotenv from 'dotenv'
 dotenv.config();

@@ -1,9 +1,9 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'
+import cookieParser from 'cookie-parser';
 
-
-import userRouter from './routes/router.js'  //stores all the user routes 
+import userRouter from './routes/user.route.js'  //stores all the user routes 
 import authRoute from './routes/auth.routes.js'  //stores all the auth routes
 
 
@@ -18,9 +18,9 @@ const app=express();
 
 
 app.use(express.json());  //read json data
-
 app.use('/api/user',userRouter);
 app.use('/api/auth',authRoute);
+app.use(cookieParser());
 
 //handelling error in server
 app.use((err,req,res,next)=>{
