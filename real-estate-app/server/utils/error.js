@@ -1,9 +1,0 @@
-//handelling error by client 
- 
-export const handleError=(statusCode,message)=>{
-    const error=new Error();
-    error.statusCode = statusCode;
-    error.message=message;  
-    return error;
-}
-
