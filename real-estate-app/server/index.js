@@ -18,9 +18,10 @@ const app=express();
 
 
 app.use(express.json());  //read json data
+app.use(cookieParser());
 app.use('/api/user',userRouter);
 app.use('/api/auth',authRoute);
-app.use(cookieParser());
+
 
 //handelling error in server
 app.use((err,req,res,next)=>{

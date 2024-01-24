@@ -45,6 +45,7 @@ function Signin() {
             return;
           }
           dispatch(signInSuccess(data)); // Use signInSuccess from userSlice
+          
           navigate('/');
         } catch (error) {
           dispatch(signInFailure(error.messege));
@@ -65,7 +66,7 @@ function Signin() {
             <OAuth/>
           </form>
           <div className="flex gap-2 mt-5">
-          <p> Don't have an account? </p>
+          <p> Don`t have an account? </p>
           <Link to="/signup" className='text-blue-500 hover:underline'>Sign up</Link>
           </div>
           {error && <p className='text-red-700'>{error}</p>}

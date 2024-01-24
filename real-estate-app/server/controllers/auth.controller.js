@@ -36,7 +36,10 @@ export const signIn=async(req,res,next)=>{
         }
         const token=jwt.sign({id:validUser._id},secretKey)
         const {password:pass, ...userInfo}=validUser._doc;
-        res.cookie('access_token',token,{httpOnly:true, expires:new Date(Date.now()+24*60*60*1000)}).status(200).json(userInfo);
+        res.cookie('accesstoken', token, {
+          httpOnly: true,
+          expires: new Date(Date.now() + 24 * 60 * 60 * 1000)
+      }).status(200).json(userInfo);
     } catch (error) {
         next(error);
     }
@@ -49,7 +52,7 @@ export const googleSignIn = async (req, res, next) => {
         const token = jwt.sign({ id: user._id },secretKey);
         const { password: pass, ...rest } = user._doc;
         res
-          .cookie('access_token', token, { httpOnly: true })
+          .cookie('accesstoken', token, { httpOnly: true })
           .status(200)
           .json(rest);
       } else {
@@ -68,10 +71,10 @@ export const googleSignIn = async (req, res, next) => {
         await newUser.save();
         const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
         const { password: pass, ...rest } = newUser._doc;
-        res
-          .cookie('access_token', token, { httpOnly: true })
-          .status(200)
-          .json(rest);
+        res.cookie('accesstoken', token, {
+          httpOnly: true,
+          expires: new Date(Date.now() + 24 * 60 * 60 * 1000)
+      }).status(200).json(rest);
       }
     } catch (error) {
       next(error);

@@ -1,6 +1,6 @@
-import { handleError } from '../utils/error';
+import { handleError } from '../utils/error.js';
 import bcryptjs from 'bcryptjs';
-import User from '../models/user.model';
+import User from '../models/user.model.js';
 
 export const test=(req,res)=>{
     res.send("Ehllow mate!!")
@@ -24,7 +24,7 @@ export const updateUser = async (req, res, next) => {
             email: req.body.email,
             password: req.body.password,
             avatar: req.body.avatar,
-          },
+          }
         },
         { new: true }
       );

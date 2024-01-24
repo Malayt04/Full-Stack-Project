@@ -1,15 +1,19 @@
+import { handleError } from "./error.js";
 import jwt from 'jsonwebtoken';
-import { handleError } from './error.js';
 
-export const verifyToken = (req, res, next) => {
-  const token = req.cookies.access_token;
+export const verifyUser = (req, res, next) => {
+    const token = req.cookies.accesstoken;
 
-  if (!token) return next(handleError(401, 'Unauthorized'));
+    if (!token) {
+        return next(handleError(401, "Unauthorized"));
+    }
 
-  jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
-    if (err) return next(handleError(403, 'Forbidden'));
+    jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
+        if (err) {
+            return next(handleError(403, 'Forbidden'));
+        }
 
-    req.user = user;
-    next();
-  });
+        req.user = user;
+        next();
+    });
 };
